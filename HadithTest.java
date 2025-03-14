@@ -25,4 +25,15 @@ class HadithTest {
     void testHadithToString() {
         assertNotNull(hadith.toString());
     }
+      @Test
+    void testAssertThrows() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            throw new IllegalArgumentException("Invalid Input");
+        });
+    }
+
+    @Test
+    void testAssertTimeout() {
+        assertTimeout(Duration.ofSeconds(1), () -> Thread.sleep(500));  // Should not exceed 1 second
+    }
 }

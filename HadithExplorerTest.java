@@ -9,17 +9,33 @@ class HadithExplorerTest {
         hadithExplorer = new HadithExplorer();
     }
 
-    @Test
-    void testHadithListOperations() {
-        // Check if list is initially empty
-        assertTrue(hadithExplorer.hadithList.isEmpty());
+    @Mock
+    private Hadith hadithMock;
 
-        // Add a new Hadith
-        Hadith newHadith = new Hadith("Example Hadith", "Muslim", "Morals");
-        hadithExplorer.hadithList.add(newHadith);
+    @InjectMocks
+    private HadithExplorer hadithExplorer;
 
-        // Check if the list contains one Hadith
-        assertFalse(hadithExplorer.hadithList.isEmpty());
-        assertEquals(1, hadithExplorer.hadithList.size());
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        hadithExplorer = new HadithExplorer();
     }
+
+
+    @Test
+    void testAddHadith() {
+        Hadith newHadith = new Hadith("Kindness is a mark of faith.", "Muslim", "Morals");
+        hadithExplorer.addHadith(newHadith);  // This method should exist in HadithExplorer
+
+        assertFalse(hadithExplorer.getHadithList().isEmpty());
+        assertEquals(1, hadithExplorer.getHadithList().size());
+        assertEquals("Muslim", hadithExplorer.getHadithList().get(0).getSource());
+    }
+
 }
+
+
+
+
+
+
