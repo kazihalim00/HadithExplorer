@@ -1,4 +1,11 @@
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
+import java.time.Duration;
+import java.util.stream.Stream;
 import static org.junit.jupiter.api.Assertions.*;
 
 class HadithTest {
@@ -64,5 +71,11 @@ class HadithTest {
         assertNotNull(hadith.getText());
         assertNotNull(hadith.getSource());
         assertNotNull(hadith.getCategory());
+    }
+    @Test
+    void testAssertNullAndNotNull() {
+        Hadith nullHadith = null;
+        assertNull(nullHadith);
+        assertNotNull(hadith);
     }
 }
